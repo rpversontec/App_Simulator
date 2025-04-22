@@ -189,65 +189,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- Event Listener for Send Button ---
-  sendBtn.addEventListener("click", async () => {
-    const backendUrl = backendUrlInput.value;
-    if (!backendUrl) {
-      alert("Please enter the Backend Server URL.");
-      return;
-    }
-
-    const formData = gatherFormData();
-    if (!formData) {
-      alert("Could not gather form data. Please check selections.");
-      return;
-    }
-
-    jsonPreviewArea.textContent = JSON.stringify(formData, null, 2); // Show JSON being sent
-    responseArea.innerHTML = `Sending request to ${backendUrl}...`;
-
-    try {
-      const response = await fetch(backendUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          // Add any other headers like Authorization if needed
-          // 'Authorization': 'Bearer YOUR_TOKEN_HERE'
-        },
-        body: JSON.stringify(formData), // Send raw JSON string
-      });
-
-      // --- Display Response ---
-      const status = response.status;
-      const statusText = response.statusText;
-      let responseBody = await response.text(); // Get response body as text first
-
-      let formattedBody = responseBody;
-      try {
-        // Try to parse as JSON for pretty printing if applicable
-        const jsonBody = JSON.parse(responseBody);
-        formattedBody = JSON.stringify(jsonBody, null, 2);
-      } catch (e) {
-        // It wasn't JSON, keep the original text
-      }
-
-      const statusClass = response.ok ? "status-ok" : "status-error"; // Class for styling
-
-      responseArea.innerHTML = `
-                <p><strong>Status:</strong> <span class="${statusClass}">${status} ${statusText}</span></p>
-                <p><strong>Response Body:</strong></p>
-                <pre>${formattedBody || "(No response body)"}</pre>
-            `;
-    } catch (error) {
-      console.error("Error sending request:", error);
-      responseArea.innerHTML = `
-                <p><strong class="status-error">Error sending request:</strong></p>
-                <pre>${error.message}</pre>
-                <p>Check the URL and network connection. See browser console for details.</p>
-            `;
-    }
-  });
-
   // --- Initial setup ---
   // Trigger change event on load in case a default value is set
   tipoRegistroSelect.dispatchEvent(new Event("change"));
