@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile App Data Sender Simulator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="pane" id="form-simulator">
+        <h2>AWAQ App Simulator</h2>
+        <p>Fill the form to simulate data structure for your API request.</p>
+
+        <div class="form-section">
+          <h3>Initial Data</h3>
+
+          <label for="estadoTiempo">Weather Condition:</label>
+          <select id="estadoTiempo" name="estadoTiempo" required>
+            <option value="">--Select--</option>
+            <option value="soleado">Soleado (Sunny)</option>
+            <option value="parcialmente_nublado">
+              Parcialmente Nublado (Partly Cloudy)
+            </option>
+            <option value="lluvioso">Lluvioso (Rainy)</option>
+          </select>
+
+          <label for="estacion">Season:</label>
+          <select id="estacion" name="estacion" required>
+            <option value="">--Select--</option>
+            <option value="verano_seco">Verano/Seco (Summer/Dry)</option>
+            <option value="invierno_lluviosa">
+              Invierno/Lluviosa (Winter/Rainy)
+            </option>
+          </select>
+
+          <label for="tipoRegistro">Record Type:</label>
+          <select id="tipoRegistro" name="tipoRegistro" required>
+            <option value="">--Select Record Type--</option>
+            <option value="fauna_transecto">Fauna en Transecto</option>
+            <option value="fauna_punto_conteo">Fauna en Punto de Conteo</option>
+            <option value="fauna_busqueda_libre">Fauna Búsqueda Libre</option>
+            <option value="validacion_cobertura">
+              Validación de Cobertura
+            </option>
+            <option value="parcela_vegetacion">Parcela de Vegetación</option>
+            <option value="camaras_trampa">Cámaras Trampa</option>
+            <option value="variables_climaticas">Variables Climáticas</option>
+          </select>
+        </div>
+
+        <div id="specific-forms">
+          <p id="placeholder-info" class="form-section">
+            Select a "Record Type" above to see the specific form.
+          </p>
+
+          <div
+            id="form-fauna_transecto"
+            class="specific-form hidden form-section"
+          >
+            <h3>Fauna en Transecto Details</h3>
+            <label for="ft-numeroTransecto">Transect Number:</label>
+            <input
+              type="text"
+              id="ft-numeroTransecto"
+              name="numeroTransecto"
+              required
+            />
+
+            <label>Animal Type:</label>
+            <div class="radio-group">
+              <label
+                ><input
+                  type="radio"
+                  name="ft-tipoAnimal"
+                  value="mamifero"
+                  required
+                />
+                Mammal</label
+              >
+              <label
+                ><input type="radio" name="ft-tipoAnimal" value="ave" />
+                Bird</label
+              >
+              <label
+                ><input type="radio" name="ft-tipoAnimal" value="reptil" />
+                Reptile</label
+              >
+              <label
+                ><input type="radio" name="ft-tipoAnimal" value="anfibio" />
+                Amphibian</label
+              >
+              <label
+                ><input type="radio" name="ft-tipoAnimal" value="insecto" />
+                Insect</label
+              >
+            </div>
+
+            <label for="ft-nombreComun">Common Name:</label>
+            <input
+              type="text"
+              id="ft-nombreComun"
+              name="nombreComun"
+              required
+            />
+
+            <label for="ft-nombreCientifico">Scientific Name (Optional):</label>
+            <input
+              type="text"
+              id="ft-nombreCientifico"
+              name="nombreCientifico"
+            />
+
+            <label for="ft-numeroIndividuos">Number of Individuals:</label>
+            <input
+              type="number"
+              id="ft-numeroIndividuos"
+              name="numeroIndividuos"
+              min="1"
+              required
+            />
+
+            <label>Observation Type:</label>
+            <div class="radio-group">
+              <label
+                ><input
+                  type="radio"
+                  name="ft-tipoObservacion"
+                  value="la_vio"
+                  required
+                />
+                Seen</label
+              >
+              <label
+                ><input type="radio" name="ft-tipoObservacion" value="huella" />
+                Track</label
+              >
+              <label
+                ><input type="radio" name="ft-tipoObservacion" value="rastro" />
+                Sign</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="ft-tipoObservacion"
+                  value="caceria"
+                />
+                Hunting</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="ft-tipoObservacion"
+                  value="le_dijeron"
+                />
+                Reported</label
+              >
+            </div>
+
+            <label for="ft-observaciones">Observations (Optional):</label>
+            <textarea
+              id="ft-observaciones"
+              name="observaciones"
+              rows="3"
+            ></textarea>
+            <label>Evidence (URLs/IDs - Optional):</label>
+            <input
+              type="text"
+              id="ft-evidencias"
+              name="evidencias"
+              placeholder="Enter comma-separated URLs/IDs"
+            />
+          </div>
+
+          <div
+            id="form-fauna_punto_conteo"
+            class="specific-form hidden form-section"
+          >
+            <h3>Fauna en Punto de Conteo Details</h3>
+            <label>Zone:</label>
+            <div class="radio-group">
+              <label
+                ><input type="radio" name="fpc-zona" value="bosque" required />
+                Bosque</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fpc-zona"
+                  value="arreglo_agroforestal"
+                />
+                Arreglo Agroforestal</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fpc-zona"
+                  value="cultivos_transitorios"
+                />
+                Cultivos Transitorios</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fpc-zona"
+                  value="cultivos_permanentes"
+                />
+                Cultivos Permanentes</label
+              >
+            </div>
+
+            <label>Animal Type:</label>
+            <div class="radio-group">
+              <label
+                ><input
+                  type="radio"
+                  name="fpc-tipoAnimal"
+                  value="mamifero"
+                  required
+                />
+                Mammal</label
+              >
+              <label
+                ><input type="radio" name="fpc-tipoAnimal" value="ave" />
+                Bird</label
+              >
+              <label
+                ><input type="radio" name="fpc-tipoAnimal" value="reptil" />
+                Reptile</label
+              >
+              <label
+                ><input type="radio" name="fpc-tipoAnimal" value="anfibio" />
+                Amphibian</label
+              >
+              <label
+                ><input type="radio" name="fpc-tipoAnimal" value="insecto" />
+                Insect</label
+              >
+            </div>
+
+            <label for="fpc-nombreComun">Common Name:</label>
+            <input
+              type="text"
+              id="fpc-nombreComun"
+              name="nombreComun"
+              required
+            />
+
+            <label for="fpc-nombreCientifico"
+              >Scientific Name (Optional):</label
+            >
+            <input
+              type="text"
+              id="fpc-nombreCientifico"
+              name="nombreCientifico"
+            />
+
+            <label for="fpc-numeroIndividuos">Number of Individuals:</label>
+            <input
+              type="number"
+              id="fpc-numeroIndividuos"
+              name="numeroIndividuos"
+              min="1"
+              required
+            />
+
+            <label>Observation Type:</label>
+            <div class="radio-group">
+              <label
+                ><input
+                  type="radio"
+                  name="fpc-tipoObservacion"
+                  value="la_vio"
+                  required
+                />
+                Seen</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fpc-tipoObservacion"
+                  value="huella"
+                />
+                Track</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fpc-tipoObservacion"
+                  value="rastro"
+                />
+                Sign</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fpc-tipoObservacion"
+                  value="caceria"
+                />
+                Hunting</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fpc-tipoObservacion"
+                  value="le_dijeron"
+                />
+                Reported</label
+              >
+            </div>
+
+            <label>Observation Height:</label>
+            <div class="radio-group">
+              <label
+                ><input
+                  type="radio"
+                  name="fpc-alturaObservacion"
+                  value="baja_<1mt"
+                  required
+                />
+                Low (&lt;1m)</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fpc-alturaObservacion"
+                  value="media_1-3mt"
+                />
+                Medium (1-3m)</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fpc-alturaObservacion"
+                  value="alta_>3mt"
+                />
+                High (&gt;3m)</label
+              >
+            </div>
+
+            <label for="fpc-observaciones">Observations (Optional):</label>
+            <textarea
+              id="fpc-observaciones"
+              name="observaciones"
+              rows="3"
+            ></textarea>
+
+            <label>Evidence (URLs/IDs - Optional):</label>
+            <input
+              type="text"
+              id="fpc-evidencias"
+              name="evidencias"
+              placeholder="Enter comma-separated URLs/IDs"
+            />
+          </div>
+
+          <div
+            id="form-fauna_busqueda_libre"
+            class="specific-form hidden form-section"
+          >
+            <h3>Fauna en Búsqueda Libre Details</h3>
+            <label>Zone:</label>
+            <div class="radio-group">
+              <label
+                ><input type="radio" name="fbl-zona" value="bosque" required />
+                Bosque</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fbl-zona"
+                  value="arreglo_agroforestal"
+                />
+                Arreglo Agroforestal</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fbl-zona"
+                  value="cultivos_transitorios"
+                />
+                Cultivos Transitorios</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fbl-zona"
+                  value="cultivos_permanentes"
+                />
+                Cultivos Permanentes</label
+              >
+            </div>
+            <label>Animal Type:</label>
+            <div class="radio-group">
+              <label
+                ><input
+                  type="radio"
+                  name="fbl-tipoAnimal"
+                  value="mamifero"
+                  required
+                />
+                Mammal</label
+              >
+              <label
+                ><input type="radio" name="fbl-tipoAnimal" value="ave" />
+                Bird</label
+              >
+              <label
+                ><input type="radio" name="fbl-tipoAnimal" value="reptil" />
+                Reptile</label
+              >
+              <label
+                ><input type="radio" name="fbl-tipoAnimal" value="anfibio" />
+                Amphibian</label
+              >
+              <label
+                ><input type="radio" name="fbl-tipoAnimal" value="insecto" />
+                Insect</label
+              >
+            </div>
+            <label for="fbl-nombreComun">Common Name:</label>
+            <input
+              type="text"
+              id="fbl-nombreComun"
+              name="nombreComun"
+              required
+            />
+            <label for="fbl-nombreCientifico"
+              >Scientific Name (Optional):</label
+            >
+            <input
+              type="text"
+              id="fbl-nombreCientifico"
+              name="nombreCientifico"
+            />
+            <label for="fbl-numeroIndividuos">Number of Individuals:</label>
+            <input
+              type="number"
+              id="fbl-numeroIndividuos"
+              name="numeroIndividuos"
+              min="1"
+              required
+            />
+            <label>Observation Type:</label>
+            <div class="radio-group">
+              <label
+                ><input
+                  type="radio"
+                  name="fbl-tipoObservacion"
+                  value="la_vio"
+                  required
+                />
+                Seen</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fbl-tipoObservacion"
+                  value="huella"
+                />
+                Track</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fbl-tipoObservacion"
+                  value="rastro"
+                />
+                Sign</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fbl-tipoObservacion"
+                  value="caceria"
+                />
+                Hunting</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fbl-tipoObservacion"
+                  value="le_dijeron"
+                />
+                Reported</label
+              >
+            </div>
+            <label>Observation Height:</label>
+            <div class="radio-group">
+              <label
+                ><input
+                  type="radio"
+                  name="fbl-alturaObservacion"
+                  value="baja_<1mt"
+                  required
+                />
+                Low (&lt;1m)</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fbl-alturaObservacion"
+                  value="media_1-3mt"
+                />
+                Medium (1-3m)</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="fbl-alturaObservacion"
+                  value="alta_>3mt"
+                />
+                High (&gt;3m)</label
+              >
+            </div>
+            <label for="fbl-observaciones">Observations (Optional):</label>
+            <textarea
+              id="fbl-observaciones"
+              name="observaciones"
+              rows="3"
+            ></textarea>
+            <label>Evidence (URLs/IDs - Optional):</label>
+            <input
+              type="text"
+              id="fbl-evidencias"
+              name="evidencias"
+              placeholder="Enter comma-separated URLs/IDs"
+            />
+          </div>
+
+          <div
+            id="form-validacion_cobertura"
+            class="specific-form hidden form-section"
+          >
+            <h3>Validación de Cobertura Details</h3>
+            <label for="vc-codigo">Code:</label>
+            <input type="text" id="vc-codigo" name="codigo" required />
+            <label>Follow-up?</label>
+            <div class="radio-group">
+              <label
+                ><input
+                  type="radio"
+                  name="vc-seguimiento"
+                  value="true"
+                  required
+                />
+                Yes</label
+              >
+              <label
+                ><input type="radio" name="vc-seguimiento" value="false" />
+                No</label
+              >
+            </div>
+
+            <label>Changed?</label>
+            <div class="radio-group">
+              <label
+                ><input type="radio" name="vc-cambio" value="true" required />
+                Yes</label
+              >
+              <label
+                ><input type="radio" name="vc-cambio" value="false" /> No</label
+              >
+            </div>
+
+            <label for="vc-cobertura">Coverage Type:</label>
+            <select id="vc-cobertura" name="cobertura" required>
+              <option value="">--Select--</option>
+              <option value="BD">BD</option>
+              <option value="RA">RA</option>
+              <option value="RB">RB</option>
+              <option value="PA">PA</option>
+              <option value="PL">PL</option>
+              <option value="CP">CP</option>
+              <option value="CT">CT</option>
+              <option value="VH">VH</option>
+              <option value="TD">TD</option>
+              <option value="IF">IF</option>
+            </select>
+
+            <label for="vc-tiposCultivo">Crop Types (Optional):</label>
+            <input type="text" id="vc-tiposCultivo" name="tiposCultivo" />
+            <label for="vc-disturbio">Disturbance Type:</label>
+            <select id="vc-disturbio" name="disturbio" required>
+              <option value="">--Select--</option>
+              <option value="inundacion">Inundación (Flooding)</option>
+              <option value="quema">Quema (Burning)</option>
+              <option value="tala">Tala (Logging)</option>
+              <option value="erupcion">Erupción (Eruption)</option>
+              <option value="mineria">Minería (Mining)</option>
+              <option value="carretera">Carretera (Road)</option>
+              <option value="mas_plantas_acuaticas">
+                Más plantas acuáticas (More aquatic plants)
+              </option>
+              <option value="otro">Otro (Other)</option>
+            </select>
+
+            <label for="vc-observaciones">Observations (Optional):</label>
+            <textarea
+              id="vc-observaciones"
+              name="observaciones"
+              rows="3"
+            ></textarea>
+
+            <label>Evidence (URLs/IDs - Optional):</label>
+            <input
+              type="text"
+              id="vc-evidencias"
+              name="evidencias"
+              placeholder="Enter comma-separated URLs/IDs"
+            />
+          </div>
+
+          <div
+            id="form-parcela_vegetacion"
+            class="specific-form hidden form-section"
+          >
+            <h3>Parcela de Vegetación Details</h3>
+            <label for="pv-codigo">Code:</label>
+            <input type="text" id="pv-codigo" name="codigo" required />
+            <label>Quadrant:</label>
+            <div class="radio-group">
+              <label
+                ><input type="radio" name="pv-cuadrante" value="A" required />
+                A</label
+              >
+              <label
+                ><input type="radio" name="pv-cuadrante" value="B" /> B</label
+              >
+              <label
+                ><input type="radio" name="pv-cuadrante" value="C" /> C</label
+              >
+              <label
+                ><input type="radio" name="pv-cuadrante" value="D" /> D</label
+              >
+              <label
+                ><input type="radio" name="pv-cuadrante" value="E" /> E</label
+              >
+              <label
+                ><input type="radio" name="pv-cuadrante" value="F" /> F</label
+              >
+              <label
+                ><input type="radio" name="pv-cuadrante" value="G" /> G</label
+              >
+            </div>
+
+            <label>Sub-Quadrant:</label>
+            <div class="radio-group">
+              <label
+                ><input
+                  type="radio"
+                  name="pv-subCuadrante"
+                  value="1"
+                  required
+                />
+                1</label
+              >
+              <label
+                ><input type="radio" name="pv-subCuadrante" value="2" />
+                2</label
+              >
+              <label
+                ><input type="radio" name="pv-subCuadrante" value="3" />
+                3</label
+              >
+              <label
+                ><input type="radio" name="pv-subCuadrante" value="4" />
+                4</label
+              >
+            </div>
+
+            <label>Growth Habit:</label>
+            <div class="radio-group">
+              <label
+                ><input
+                  type="radio"
+                  name="pv-habitoCrecimiento"
+                  value="arbusto_<1mt"
+                  required
+                />
+                Shrub (&lt;1m)</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="pv-habitoCrecimiento"
+                  value="arbolito_1-3mt"
+                />
+                Small Tree (1-3m)</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="pv-habitoCrecimiento"
+                  value="arbol_>3mt"
+                />
+                Tree (&gt;3m)</label
+              >
+            </div>
+
+            <label for="pv-nombreComun">Common Name:</label>
+            <input
+              type="text"
+              id="pv-nombreComun"
+              name="nombreComun"
+              required
+            />
+
+            <label for="pv-nombreCientifico">Scientific Name (Optional):</label>
+            <input
+              type="text"
+              id="pv-nombreCientifico"
+              name="nombreCientifico"
+            />
+
+            <label for="pv-placa">Plate/Tag (Optional):</label>
+            <input type="text" id="pv-placa" name="placa" />
+            <label for="pv-circunferenciaCm">Circumference (cm):</label>
+            <input
+              type="number"
+              step="0.1"
+              id="pv-circunferenciaCm"
+              name="circunferenciaCm"
+              required
+            />
+            <label for="pv-distanciaMt">Distance (m):</label>
+            <input
+              type="number"
+              step="0.1"
+              id="pv-distanciaMt"
+              name="distanciaMt"
+              required
+            />
+            <label for="pv-estaturaBiomonitorMt">Biomonitor Height (m):</label>
+            <input
+              type="number"
+              step="0.1"
+              id="pv-estaturaBiomonitorMt"
+              name="estaturaBiomonitorMt"
+              required
+            />
+            <label for="pv-alturaMt">Height (m):</label>
+            <input
+              type="number"
+              step="0.1"
+              id="pv-alturaMt"
+              name="alturaMt"
+              required
+            />
+            <label for="pv-observaciones">Observations (Optional):</label>
+            <textarea
+              id="pv-observaciones"
+              name="observaciones"
+              rows="3"
+            ></textarea>
+
+            <label>Evidence (URLs/IDs - Optional):</label>
+            <input
+              type="text"
+              id="pv-evidencias"
+              name="evidencias"
+              placeholder="Enter comma-separated URLs/IDs"
+            />
+          </div>
+
+          <div
+            id="form-camaras_trampa"
+            class="specific-form hidden form-section"
+          >
+            <h3>Cámaras Trampa Details</h3>
+            <label for="ct-codigo">Code:</label>
+            <input type="text" id="ct-codigo" name="codigo" required />
+            <label>Zone:</label>
+            <div class="radio-group">
+              <label
+                ><input type="radio" name="ct-zona" value="bosque" required />
+                Bosque</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="ct-zona"
+                  value="arreglo_agroforestal"
+                />
+                Arreglo Agroforestal</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="ct-zona"
+                  value="cultivos_transitorios"
+                />
+                Cultivos Transitorios</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="ct-zona"
+                  value="cultivos_permanentes"
+                />
+                Cultivos Permanentes</label
+              >
+            </div>
+
+            <label for="ct-nombreCamara">Camera Name:</label>
+            <input
+              type="text"
+              id="ct-nombreCamara"
+              name="nombreCamara"
+              required
+            />
+
+            <label for="ct-placaCamara">Camera Plate/Tag (Optional):</label>
+            <input type="text" id="ct-placaCamara" name="placaCamara" />
+            <label for="ct-placaGuaya">Cable/Lock Plate/Tag (Optional):</label>
+            <input type="text" id="ct-placaGuaya" name="placaGuaya" />
+            <label for="ct-anchoCaminoMt">Path Width (m):</label>
+            <input
+              type="number"
+              step="0.1"
+              id="ct-anchoCaminoMt"
+              name="anchoCaminoMt"
+              required
+            />
+            <label for="ct-fechaInstalacion">Installation Date:</label>
+            <input
+              type="date"
+              id="ct-fechaInstalacion"
+              name="fechaInstalacion"
+              required
+            />
+            <label for="ct-distanciaObjetivoMt">Distance to Target (m):</label>
+            <input
+              type="number"
+              step="0.1"
+              id="ct-distanciaObjetivoMt"
+              name="distanciaObjetivoMt"
+              required
+            />
+            <label for="ct-alturaLenteMt">Lens Height (m):</label>
+            <input
+              type="number"
+              step="0.1"
+              id="ct-alturaLenteMt"
+              name="alturaLenteMt"
+              required
+            />
+            <label>Checklist:</label>
+            <div class="checkbox-group">
+              <label
+                ><input
+                  type="checkbox"
+                  name="ct-listaChequeo"
+                  value="programada"
+                />
+                Programmed</label
+              >
+              <label
+                ><input
+                  type="checkbox"
+                  name="ct-listaChequeo"
+                  value="memoria"
+                />
+                Memory Card OK</label
+              >
+              <label
+                ><input
+                  type="checkbox"
+                  name="ct-listaChequeo"
+                  value="prueba_gateo"
+                />
+                Walk Test OK</label
+              >
+              <label
+                ><input
+                  type="checkbox"
+                  name="ct-listaChequeo"
+                  value="instalada"
+                />
+                Installed</label
+              >
+              <label
+                ><input
+                  type="checkbox"
+                  name="ct-listaChequeo"
+                  value="letrero_camara"
+                />
+                Camera Sign Posted</label
+              >
+              <label
+                ><input
+                  type="checkbox"
+                  name="ct-listaChequeo"
+                  value="prendida"
+                />
+                Turned On</label
+              >
+            </div>
+
+            <label for="ct-observaciones">Observations (Optional):</label>
+            <textarea
+              id="ct-observaciones"
+              name="observaciones"
+              rows="3"
+            ></textarea>
+
+            <label>Evidence (URLs/IDs - Optional):</label>
+            <input
+              type="text"
+              id="ct-evidencias"
+              name="evidencias"
+              placeholder="Enter comma-separated URLs/IDs"
+            />
+          </div>
+
+          <div
+            id="form-variables_climaticas"
+            class="specific-form hidden form-section"
+          >
+            <h3>Variables Climáticas Details</h3>
+            <label>Zone:</label>
+            <div class="radio-group">
+              <label
+                ><input type="radio" name="vc-zona" value="bosque" required />
+                Bosque</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="vc-zona"
+                  value="arreglo_agroforestal"
+                />
+                Arreglo Agroforestal</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="vc-zona"
+                  value="cultivos_transitorios"
+                />
+                Cultivos Transitorios</label
+              >
+              <label
+                ><input
+                  type="radio"
+                  name="vc-zona"
+                  value="cultivos_permanentes"
+                />
+                Cultivos Permanentes</label
+              >
+            </div>
+
+            <label for="vcl-pluviosidadMm">Pluviosity (mm):</label>
+            <input
+              type="number"
+              step="0.1"
+              id="vcl-pluviosidadMm"
+              name="pluviosidadMm"
+              required
+            />
+            <label for="vcl-temperaturaMaxima">Max Temperature (°C):</label>
+            <input
+              type="number"
+              step="0.1"
+              id="vcl-temperaturaMaxima"
+              name="temperaturaMaxima"
+              required
+            />
+            <label for="vcl-humedadMaxima">Max Humidity (%):</label>
+            <input
+              type="number"
+              step="0.1"
+              id="vcl-humedadMaxima"
+              name="humedadMaxima"
+              required
+            />
+            <label for="vcl-temperaturaMinima">Min Temperature (°C):</label>
+            <input
+              type="number"
+              step="0.1"
+              id="vcl-temperaturaMinima"
+              name="temperaturaMinima"
+              required
+            />
+            <label for="vcl-nivelQuebradaMt">Stream Level (m):</label>
+            <input
+              type="number"
+              step="0.1"
+              id="vcl-nivelQuebradaMt"
+              name="nivelQuebradaMt"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-section action-buttons">
+          <button id="generateJsonBtn">Generate JSON Preview</button>
+          <button type="reset" id="resetBtn">Reset Form</button>
+        </div>
+      </div>
+      <div class="pane" id="backend-interaction">
+        <h2>Backend Interaction</h2>
+
+        <div class="form-section">
+          <h3>JSON Preview</h3>
+          <pre id="jsonPreview">JSON preview will appear here...</pre>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
